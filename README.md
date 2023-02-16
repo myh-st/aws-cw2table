@@ -6,7 +6,7 @@ Get cloudwatch stats write to csv file
 Download script then execute command below:
 
     chmod -x aws-cw2table.sh
-    ./script AWSprofileName
+    ./aws-cw2table.sh AWSprofileName
    
 Parse argument AWSprofileName to your AWS Profile name (in this case switch role)
 
@@ -18,3 +18,6 @@ and write to xxx.csv file
 
 # Noted
 Get metrics 30 days ago and period 86400 (1 month) = respond result = 1 data point
+
+# Example CSV result
+![image](https://user-images.githubusercontent.com/37788058/219356565-f4b8cffe-74bc-45ca-b9f5-c9e2993fbab5.png)
