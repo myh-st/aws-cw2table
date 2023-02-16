@@ -8,7 +8,7 @@ Download script then execute command below:
     chmod -x aws-cw2table.sh
     ./aws-cw2table.sh AWSprofileName
    
-Parse argument AWSprofileName to your AWS Profile name (in this case switch role)
+Change AWSprofileName to your AWS Profile name (in this case switch role)
 
 # How it works
 1.Script get all EC2 instance profile from argument 1 write to xxx.txt file
