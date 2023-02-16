@@ -16,6 +16,9 @@ CW_CUSTOM_NAMESPACE="CWAgent"
 
 aws ec2 describe-instances --profile $AWS_PROFILE --query 'Reservations[*].Instances[*].[InstanceId]' --output text > $FILENAME
 
+#Write Header to a CSV file
+echo "instanceState,instanceName,%CPUUtilization,%MemUsed,DiskUsed/GB,DiskFree/GB,DiskTotal/GB,NetworkIn/Bytes,NetworkOut/Bytes" > $OUTPUT_FILE
+
 while read -r line
 do
 
@@ -156,24 +159,4 @@ echo "Metrics for instance $INSTANCE_ID ($INSTANCE_NAME) written to $OUTPUT_FILE
 done < "$FILENAME"
 
 # Write Header to a CSV file
-sed -i '1i instanceState,instanceName,%CPUUtilization,%MemUsed,DiskUsed/GB,DiskFree/GB,DiskTotal/GB,NetworkIn/Bytes,NetworkOut/Bytes' $OUTPUT_FILE
-
-
-# # ------------------------------------TEST --------------------------------------
-# INSTANCE_ID="i-0267b615500354330"
-
-# aws cloudwatch get-metric-statistics \
-#     --namespace $CW_CUSTOM_NAMESPACE \
-#     --metric-name mem_used_percent \
-#     --start-time $(date -u -d '30 day ago' +%Y-%m-%dT%H:%M:%SZ) \
-#     --end-time $(date -u +%Y-%m-%dT%H:%M:%SZ) \
-#     --period 86400 \
-#     --statistics Average \
-#     --dimensions Name=InstanceId,Value=$INSTANCE_ID \
-#     --profile $AWS_PROFILE \
-#     | grep -i average \
-#     | cut -f2 -d":" \
-#     | tr -d -c .0-9 \
-#     | cut -b 1-5 
-
-# #---------------------------------------------------------------------------------
+# sed -i '1i instanceState,instanceName,%CPUUtilization,%MemUsed,DiskUsed/GB,DiskFree/GB,DiskTotal/GB,NetworkIn/Bytes,NetworkOut/Bytes' $OUTPUT_FILE
