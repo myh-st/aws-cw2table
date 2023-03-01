@@ -5,7 +5,7 @@ Get cloudwatch stats write to csv file
 
 Download script then execute command below:
 
-    chmod -x aws-cw2table.sh
+    chmod +x aws-cw2table.sh
     ./aws-cw2table.sh AWSprofileName
    
 Change AWSprofileName to your AWS Profile name (in this case switch role)
