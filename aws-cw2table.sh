@@ -4,8 +4,8 @@
 # set -x
 
 if [ $# -ne 1 ]; then
-  echo "Usage: script.sh arg1 "
-  echo "./script profileName"
+  echo "Usage: aws-cw2table.sh AWSprofileName "
+  echo "./aws-cw2table.sh AWSprofileName"
   exit 1
 fi
 
